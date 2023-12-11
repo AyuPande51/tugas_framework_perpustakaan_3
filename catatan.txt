@@ -1,0 +1,19 @@
+run this step for run your application
+PUANNNN YUU ini step kalau mau jalannin aplikasi 
+
+1. run server
+
+-> php artisan server
+
+2. run database
+
+-> php artisan migrate
+
+3. run database seeder ( isi database)
+
+php artisan db:seed --class=UserSeeder
+php artisan db:seed --class=KategoriSeeder
+php artisan db:seed --class=BukuSeeder
+php artisan db:seed --class=PeminjamanBukuSeeder
+
+4. anda kesulitan ada error ? hubungi 08970299606 ( i putu adi santika jaya,)
