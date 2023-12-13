@@ -10,7 +10,7 @@ class Kategori extends Model
     use HasFactory;
 
     protected $table = 'tb_kategori';
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'id_kategori';
 
     protected $fillable = ['nama_kategori'];
 }

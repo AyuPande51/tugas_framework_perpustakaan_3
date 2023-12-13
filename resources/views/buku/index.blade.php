@@ -38,11 +38,11 @@
                         <td>{{$buku->nama_kategori}}</td>
                         <td>{{$buku->deskripsi}}</td>
                         <td>
-                            <a class="btn btn-sm btn-warning" href="{{ route('buku.edit', $buku) }}">Ubah</a>
+                            <a class="btn btn-sm btn-warning" href="{{ route('buku.edit', $buku) }}"><i class="fa-solid fa-pen-to-square"></i></a>
                             <form method="POST" class="d-inline" action="{{ route('buku.destroy', $buku) }}">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-danger" onclick="return confirm('Hapus Data')">HAPUS</button>
+                                <button class="btn btn-danger" onclick="return confirm('Hapus Data')"><i class="fa-solid fa-trash"></i></button>
                             </form>
                         </td>
                     </tr>

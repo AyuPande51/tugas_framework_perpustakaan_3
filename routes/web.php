@@ -6,6 +6,8 @@ use App\Http\Controllers\CVController;
 use App\Http\Controllers\M5Controller;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\BukuController;
+use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,6 +15,12 @@ use Illuminate\Support\Facades\Route;
 
 //Minggu ke- 9//
 Route::middleware('auth')->group(function(){
+    // PENJUALAN
+    Route::resource('peminjaman', PeminjamanController::class)->parameters(['anggota' => 'anggota']);
+
+    // KATEGORI
+    Route::resource('kategori', KategoriController::class);
+
     //PASSWORD
     Route::get('password', [UserController::class, 'password'])->name('user.password');
     Route::post('password', [UserController::class, 'passwordAction'])->name('user.password.action');
