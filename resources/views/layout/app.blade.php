@@ -26,6 +26,9 @@
                         <a class="nav-link" href="{{route('user.index')}}"><i class="fa fa-users"></i> User</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{route('anggota.index')}}"><i class="fa fa-users"></i> Anggota</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{route('buku.index')}}"><i class="fa-solid fa-book"></i> Buku</a>
                     </li>
                     <li class="nav-item">

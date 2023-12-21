@@ -10,7 +10,7 @@
                     <input class="form-control" name="q" value="{{ $q }}" placeholder="Pencarian...../">
                 </div>
                 <div class="col">
-                    <button class="btn btn-success">Refresh</button>
+                    <button class="btn btn-primary">Refresh</button>
                 </div> 
                 <div class="col">
                     <a class="btn btn-success" href="{{route('peminjaman.create')}}">Tambah</a>

@@ -39,7 +39,7 @@ class BukuController extends Controller
             'deskripsi' => 'required',
         ]);
 
-        
+
         $buku = new Buku($request->all());
         $buku->save();
 

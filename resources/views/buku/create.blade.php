@@ -11,7 +11,7 @@
                     </ul>
                 </div>   
             @endif
-            <form method="POST" action="{{route('buku.store')}}">                @csrf 
+            <form method="POST" action="{{route('buku.store')}}" enctype="multipart/form-data">                @csrf 
                 {{-- ini fungsi unntuk token form laravel --}}
                 <div class="mb-3">
                     <label>Judul</label>
@@ -37,6 +37,11 @@
                     <label>Deskripsi</label>
                     <input class="form-control" type="text" name="deskripsi" value={{old('deskripsi')}}>
                 </div>
+                <div class="mb-3">
+                    <label>Gambar</label>
+                    <input class="form-control" type="file" name="gambar">
+                </div>
+
                 <div class="col">
                     <button type="submit" class="btn btn-primary">Simpan</button>
                     <a class="btn btn-danger" href="{{route('buku.index')}}">Kembali</a>

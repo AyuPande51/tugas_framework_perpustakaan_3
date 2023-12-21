@@ -1,25 +1,31 @@
 <?php
 
-
+use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\M4Controller;
 use App\Http\Controllers\CVController;
 use App\Http\Controllers\M5Controller;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\BukuController;
+use App\Http\Controllers\Kategori;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-
-
 //Minggu ke- 9//
 Route::middleware('auth')->group(function(){
+    //ANGGOTA
+    Route::resource('anggota', AnggotaController::class)->parameters(['anggota' => 'anggota']);
+    
     // PENJUALAN
     Route::resource('peminjaman', PeminjamanController::class)->parameters(['anggota' => 'anggota']);
 
     // KATEGORI
     Route::resource('kategori', KategoriController::class);
+    // kategori
+    // kateori/create
+    // kategori
+    //
 
     //PASSWORD
     Route::get('password', [UserController::class, 'password'])->name('user.password');

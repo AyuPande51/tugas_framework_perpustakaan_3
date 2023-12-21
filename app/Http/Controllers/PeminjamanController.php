@@ -23,7 +23,7 @@ class PeminjamanController extends Controller
             ->withQueryString();
         $no = $peminjamans->firstItem();
         return view('peminjaman.index', compact('title','peminjamans', 'q', 'no'));
-        }
+    }
 
     /**
      * Show the form for creating a new resource.
