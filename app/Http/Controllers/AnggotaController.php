@@ -51,7 +51,7 @@ class AnggotaController extends Controller
     public function edit(Anggota $anggota)
     {
         $title = 'Ubah Angota';
-        return view('anggota.edit', compact('title'));
+        return view('anggota.edit', compact('title','anggota'));
     }
 
     public function update (Request $request, Anggota $anggota)

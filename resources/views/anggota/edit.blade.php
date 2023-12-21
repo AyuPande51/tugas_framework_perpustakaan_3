@@ -12,7 +12,9 @@
                 </div>   
             @endif
             
-            <form method="POST" action="{{route('anggota.update', $anggota)}}" enctype="multipart/form-data">                @csrf 
+            <form method="POST" action="{{route('anggota.update', $anggota)}}" enctype="multipart/form-data">
+                @csrf
+                @method('put')
                 {{-- ini fungsi unntuk token form laravel --}}
                 <div class="mb-3">
                     <label>nama_anggota</label>
