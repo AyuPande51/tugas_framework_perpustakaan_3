@@ -22,6 +22,7 @@ return new class extends Migration
             $table->date('tanggal_pinjam');
             $table->date('tanggal_kembali');
             $table->string('status',20);
+            $table->integer('stok');
             $table->integer('denda');
             $table->timestamps();
             

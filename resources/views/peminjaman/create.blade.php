@@ -1,5 +1,7 @@
 @extends('layout.app')
 @section('content')
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
     <div class="row">
         <div class="col-md-6">
             @if ($errors->any())
@@ -15,14 +17,14 @@
                 @csrf
                 <div class="mb-3">
                     <label>Judul Buku</label>
-                    <select class="form-select" name="id_buku">
+                    <select class="form-select" name="id_buku" onchange="hitung()">
                         <option value="">Pilih Buku</option>
                         @foreach ($bukus as $buku)
                             @if (old('id_buku') == $buku->id_buku)
-                                <option value="{{ $buku->id_buku }}" selected> {{ $buku->judul }}
+                                <option value="{{ $buku->id_buku }}" selected data-harga="{{$buku->qty}}"> {{ $buku->judul }}
                                 </option>
                             @else
-                            <option value="{{ $buku->id_buku}}">{{ $buku->judul }}</option>
+                            <option value="{{ $buku->id_buku}}" data-harga="{{$buku->qty}}">{{ $buku->judul }}</option>
                             @endif
                         @endforeach
                     </select>
@@ -56,6 +58,18 @@
                     <input class="form-control" type="text" name="denda" value="{{ old('denda') }}">
                 </div>
                 <div class="mb-3">
+                    <label>Stok Tersedia</label>
+                    <input class="form-control" type="text" name="stok_tersedia" value="{{ old('stok_tersedia') }}" readonly>
+                </div>
+                <div class="mb-3">
+                    <label>Jumlah Barang Di ambil</label>
+                    <input class="form-control" type="text" name="jumlah_barang_diambil" value="{{ old('jumlah_barang_diambil') }}" onkeyup="hitung()">
+                </div>
+                <div class="mb-3">
+                    <label>Sisa Stok</label>
+                    <input class="form-control" type="text" name="stok" value="{{ old('stok') }}" readonly>
+                </div>
+                <div class="mb-3">
                     <label>Status Pengembalian</label>
                     <select class="form-select" name="status"  value="{{ old('status')}}">
                         <option>Belum</option>
@@ -69,4 +83,14 @@
             </form>
         </div>
     </div>
+
+    <script>
+        function hitung() {
+                let stok_buku = $('select[name="id_buku"]').find(':selected').data('harga');
+                let jumlah_barang_diambil = $('input[name="jumlah_barang_diambil"]').val();
+                total = parseInt(stok_buku) - parseInt(jumlah_barang_diambil);
+                $('input[name="stok_tersedia"]').val(stok_buku);
+                $('input[name="stok"]').val(total);
+        }
+    </script>
 @endsection

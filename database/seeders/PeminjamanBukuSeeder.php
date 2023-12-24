@@ -27,6 +27,7 @@ class PeminjamanBukuSeeder extends Seeder
                 'tanggal_pinjam' => now(),
                 'tanggal_kembali' => now(),
                 'status' => null,
+                'stok' => 10,
                 'denda' => 9000,
                 'created_at' => now(),
                 'updated_at' => now(),

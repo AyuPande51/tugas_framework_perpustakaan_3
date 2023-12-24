@@ -12,5 +12,5 @@ class Peminjaman extends Model
     protected $table = 'tb_peminjaman_buku';
     protected $primaryKey = 'id_pinjam';
 
-    protected $fillable = ['id_buku','id_user','nama','telpon','tanggal_pinjam','tanggal_kembali','status','denda'];
+    protected $fillable = ['id_buku','id_user','nama','telpon','tanggal_pinjam','tanggal_kembali','status','denda','stok'];
 }
