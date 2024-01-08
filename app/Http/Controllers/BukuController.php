@@ -5,10 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\Buku;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BukuController extends Controller
 {
  
+    private $storage;
+    public function __construct()
+    {
+        $this->storage = '/public/product/';
+    }
     public function index(Request  $request)
     {
         $title = "Data Buku";
@@ -39,9 +45,24 @@ class BukuController extends Controller
             'deskripsi' => 'required',
         ]);
 
+        // image new name
+        $new_name = time() . '.' . $request->image->getClientOriginalExtension();
 
-        $buku = new Buku($request->all());
-        $buku->save();
+        Storage::putFileAs(
+            // lokasi storage
+            $this->storage,
+            // file
+            $request->file('foto'),
+            // name
+            $new_name,
+        );
+        
+        $$user->judul = $request->judul;
+        $user->id_kategori = $request->id_kategori;
+        $user->qty = $request->qty;
+        $user->deskripsi = $request->deskripsi;
+        $user->image = $new_name;
+        $user->save();
 
         return redirect()->route('buku.index')->with(['message' => 'DATA BERHASIL DITAMBAH']);
     }

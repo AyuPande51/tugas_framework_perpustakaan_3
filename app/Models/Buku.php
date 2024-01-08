@@ -12,7 +12,7 @@ class Buku extends Model
     protected $table = 'tb_buku';
     protected $primaryKey = 'id_buku';
 
-    protected $fillable = ['judul','qty','id_kategori','deskripsi'];
+    protected $fillable = ['judul','qty','id_kategori','deskripsi', 'image'];
     
     public function kategori() {
         return $this->hasOne(Kategori::class,'id','id_kategori');
