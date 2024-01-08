@@ -15,9 +15,9 @@ class UserController extends Controller
         'nama_user' =>'required',
         'username' =>'required',
         'password' =>'required',
-        'telepon' =>'required',
-        'email' =>'required',
-        'telepon' =>'required',
+        'telp' =>'required',
+        // 'email' =>'required',
+        // 'telepon' =>'required',
     ]);
     //jika username sudah ada//
     if (User::where('username', $request->username)->first())
@@ -121,4 +121,41 @@ class UserController extends Controller
     //     $users = User::get();
     //     return view('user.index', compact('title', 'users'));
     // }
+
+    public function edit(User $user) {
+        $title = 'Ubah User';
+        $levels = ['admin', 'user'];
+        return view('user.edit', compact('title','user','levels'));
+    }
+
+    public function update(User $user,Request $request) {
+
+        $request->validate([
+            'nama_user' => 'required',
+            'username' => 'required',
+            'telp' => 'required',
+            'level' => 'required'
+        ]);
+
+        // jika username sudah ada
+        if (User::where('username', $request->username)->where('id_user', '<>', $user->id_user)->first())
+            return back()->withErrors(['username' =>'Username sudah terdaftar!']);
+
+        $user->nama_user = $request->nama_user;
+        $user->username = $request->username;
+        $user->telp = $request->telp;
+        $user->level = $request->level;
+        //enskripsi password//
+        if($request->password)
+            $user->password = Hash::make($request->password);
+        $user->save();
+        return redirect()->route('user.index')->with(['message' => 'Data berhasil diubah']);
+
+    }
+
+    public function destroy(User $user)
+    {
+        $user->delete();
+        return redirect()->route('user.index')->with(['message'=> 'Data Berhasil Dihapus!']);
+    }
 }

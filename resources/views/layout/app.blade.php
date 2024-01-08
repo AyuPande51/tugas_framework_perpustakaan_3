@@ -22,9 +22,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('home')}}"><i class="fa fa-home"></i> Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('user.index')}}"><i class="fa fa-users"></i> User</a>
-                    </li>
+                    @if(Auth::user()->level == 'admin')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('user.index')}}"><i class="fa fa-users"></i> User</a>
+                        </li>
+                    @endif
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('anggota.index')}}"><i class="fa fa-users"></i> Anggota</a>
                     </li>

@@ -28,12 +28,12 @@
             </div>
             <div class="mb-3">
                 <label>Telepon</label>
-                <input class="form-control" type="text" name="telepon" value="{{old('telepon')}}" />
+                <input class="form-control" type="text" name="telp" value="{{old('telp')}}" />
             </div>
-            <div class="mb-3">
+            {{-- <div class="mb-3">
                 <label>Email</label>
                 <input class="form-control" type="text" name="email" value="{{old('email')}}" />
-            </div>
+            </div> --}}
             <div class='mb-3'>
                 <label>Level</label>
                 <select class ="form-select" name="level" >

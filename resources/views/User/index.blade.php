@@ -37,8 +37,7 @@
                 <td>{{$no++}}</td>
                 <td>{{$user->nama_user}}</td>
                 <td>{{$user->username}}</td>
-                <td>{{$user->telepon}}</td>
-                <td>{{$user->email}}</td>
+                <td>{{$user->telp}}</td>
                 <td>{{$user->level}}</td>
                 <td>
                     <a class="btn btn-sm btn-warning" href="{{ route('user.edit', $user) }}" class="btn btn-sm btn-warning" ><i class ="fa fa-edit"></i></a>
