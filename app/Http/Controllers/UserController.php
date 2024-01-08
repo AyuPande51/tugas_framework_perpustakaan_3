@@ -9,6 +9,51 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {   
+   public function store(Request $request)
+   {
+    $request->validate([
+        'nama_user' =>'required',
+        'username' =>'required',
+        'password' =>'required',
+        'telepon' =>'required',
+        'email' =>'required',
+        'telepon' =>'required',
+    ]);
+    //jika username sudah ada//
+    if (User::where('username', $request->username)->first())
+        return back()->withErrors(['username' =>'Username sudah terdaftar!']);
+
+    $user = new User($request->all());
+    //enskripsi password//
+    $user->password = Hash::make($request->password);
+    $user->save();
+    return redirect()->route('user.index')->with(['message' => 'Data berhasil ditambah']);
+
+   }
+   
+   
+    public function create()
+    {
+        $title = 'Tambah User';
+        $levels = ['admin', 'user'];
+        return view('user.create', compact('title', 'levels'));
+    }
+    
+    
+    
+    public function index(Request $request)
+    {
+        $title = 'Data User';
+        $q = $request->query('q');
+        $users = User::where('nama_user', 'like', '%'. $q . '%')
+            ->paginate(10)
+            ->withQueryString();
+        $no = $users->firstItem();
+        return view('user.index', compact('title', 'users', 'q', 'no'));
+    }
+
+
+
     public function passwordAction(Request $request)
     {
         $request->validate([
@@ -70,10 +115,10 @@ class UserController extends Controller
         $title = 'Login';
         return view('user.login', compact('title'));
     }
-    public function index()
-    {
-        $title = 'Data User';
-        $users = User::get();
-        return view('user.index', compact('title', 'users'));
-    }
+    // public function index()
+    // {
+    //     $title = 'Data User';
+    //     $users = User::get();
+    //     return view('user.index', compact('title', 'users'));
+    // }
 }

@@ -38,6 +38,7 @@ Route::middleware('auth')->group(function(){
     Route::get('logout', [UserController::class,'logout'])->name('user.logout');
     Route::get('/', [PageController::class,'home'])->name('home');
     Route::get('user',[UserController::class,'index'])->name('user.index');
+    Route::resource('user', UserController::class);
 });
 
 

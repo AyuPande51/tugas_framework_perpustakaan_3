@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Anggota;
 use App\Models\Buku;
 use App\Models\Peminjaman;
 use App\Models\User;
@@ -14,7 +15,8 @@ class PageController extends Controller
         $title ='Home';
         $jumlah_user = User::count();
         $jumlah_buku = Buku::count();
-        $jumlah_peminjaman = Peminjaman::count();
+        // $jumlah_peminjaman = Peminjaman::count();
+        $orang = Anggota::count();
         $total_peminjaman = Peminjaman::sum('stok');
 
         $peminjaman = Peminjaman::selectRaw('tanggal_pinjam, SUM(stok) AS total')->groupBy('tanggal_pinjam')->limit(30)->get();
@@ -26,6 +28,6 @@ class PageController extends Controller
             $categories[] = $item->tanggal_pinjam;
         }
         
-        return view ('home',compact('title','jumlah_user','jumlah_buku','jumlah_peminjaman','total_peminjaman','data','categories'));
+        return view ('home',compact('title','jumlah_user','jumlah_buku','orang','total_peminjaman','data','categories'));
     }
 }

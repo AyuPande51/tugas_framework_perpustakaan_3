@@ -7,19 +7,47 @@
         <div class="col-md-3">
             <div class="card bg-primary text-white">
                 <div class="card-header">
-                    <i class="fa fa-users"></i>
+                    <i class="fa fa-users"> User</i>
                 </div>
                 <div class="card-body">
                     <h3>{{ $jumlah_user }} data user</h3>
                 </div>
                 <div class="card-footer text-md">
-                    <a href="#" class="text-white text-decoration-none">Selengkapnya 
-                        $raquo;</a>
+                    <a href="#" class="text-white text-decoration-none">Selengkapnya >></a>
                 </div>
             </div>
         </div>
+
         <div class="col-md-3">
-            <div class="card bg-primary text-white">
+            <div class="card bg-info text-white">
+                <div class="card-header">
+                    <i class="fa fa-users"></i> Anggota
+                </div>
+                <div class="card-body">
+                    <h3>{{ $orang}} orang</h3>
+                </div>
+                <div class="card-footer text-md">
+                    <a href="#" class="text-white text-decoration-none">Selengkapnya >></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card bg-danger text-white">
+                <div class="card-header">
+                    <i class="fa fa-book"></i> Buku
+                </div>
+                <div class="card-body">
+                    <h3>{{ $jumlah_buku}} buku</h3>
+                </div>
+                <div class="card-footer text-md">
+                    <a href="#" class="text-white text-decoration-none">Selengkapnya >></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card bg-success text-white">
                 <div class="card-header">
                     <i class="fa fa-users"></i> Total Peminjaman
                 </div>
@@ -27,8 +55,7 @@
                     <h3>{{ number_format($total_peminjaman,0,',','.') }}</h3>
                 </div>
                 <div class="card-footer text-md">
-                    <a href="#" class="text-white text-decoration-none">Selengkapnya 
-                        $raquo;</a>
+                    <a href="#" class="text-white text-decoration-none">Selengkapnya >></a>
                 </div>
             </div>
         </div>
