@@ -3,6 +3,7 @@
     @if (session()->has('message'))
         <p class="alert alert-info">{{ session('message')}}</p>
     @endif
+    
 <div class="card mb-3 ">
         <div class="card-header">
             <form class="row row-cols-auto g-1">
@@ -14,6 +15,9 @@
                 </div> 
                 <div class="col">
                     <a class="btn btn-primary" href="{{route('peminjaman.create')}}">Tambah</a>
+                </div>
+                <div class="col">
+                    <a class="btn btn-outline-success" href="{{route('export.peminjaman')}}">Export Excel</a>
                 </div>
             </form>
         </div>

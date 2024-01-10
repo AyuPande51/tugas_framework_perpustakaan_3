@@ -116,7 +116,7 @@ Route::get('greeting', function () {
 });
 
 // export
-Route::get('export/user', [ExportController::class, 'export']);
+Route::get('export/peminjaman', [ExportController::class, 'export'])->name('export.peminjaman');
 
 
 

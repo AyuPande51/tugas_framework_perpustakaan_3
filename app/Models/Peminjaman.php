@@ -13,4 +13,14 @@ class Peminjaman extends Model
     protected $primaryKey = 'id_pinjam';
 
     protected $fillable = ['id_buku','id_user','nama','telpon','tanggal_pinjam','tanggal_kembali','status','denda','stok'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user');
+    }
+
+    public function buku()
+    {
+        return $this->belongsTo(Buku::class, 'id_buku');
+    }
 }
