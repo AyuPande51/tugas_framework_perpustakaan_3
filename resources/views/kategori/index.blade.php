@@ -13,7 +13,7 @@
                     <button class="btn btn-success">Refresh</button>
                 </div> 
                 <div class="col">
-                    <a class="btn btn-success" href="{{route('kategori.create')}}">Tambah</a>
+                    <a class="btn btn-primary" href="{{route('kategori.create')}}">Tambah</a>
                 </div>
             </form>
         </div>

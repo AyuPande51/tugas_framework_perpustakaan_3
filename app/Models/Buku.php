@@ -12,9 +12,16 @@ class Buku extends Model
     protected $table = 'tb_buku';
     protected $primaryKey = 'id_buku';
 
-    protected $fillable = ['judul','qty','id_kategori','deskripsi', 'image'];
+    protected $fillable = ['judul','qty','id_kategori','deskripsi', 'gambar'];
     
     public function kategori() {
         return $this->hasOne(Kategori::class,'id','id_kategori');
+    }
+
+    public function getImage(){
+        if( $this->gambar && file_exists(public_path('images/buku/'.$this->gambar)))
+            return asset('images/buku/'.$this->gambar);
+        else
+            return asset('images/no_image.png');
     }
 }

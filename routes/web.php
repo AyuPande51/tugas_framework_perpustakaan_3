@@ -6,6 +6,7 @@ use App\Http\Controllers\CVController;
 use App\Http\Controllers\M5Controller;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\BukuController;
+use App\Http\Controllers\ExportController;
 use App\Http\Controllers\Kategori;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PeminjamanController;
@@ -114,6 +115,8 @@ Route::get('greeting', function () {
     echo ('hallo,saya Ayu Pande');
 });
 
+// export
+Route::get('export/user', [ExportController::class, 'export']);
 
 
 

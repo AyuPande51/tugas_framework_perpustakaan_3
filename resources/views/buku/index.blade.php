@@ -26,6 +26,7 @@
                         <th>Qty</th>
                         <th>Kategori</th>
                         <th>Deskripsi</th>
+                        <th>Image</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -37,6 +38,9 @@
                         <td>{{$buku->qty}}</td>
                         <td>{{$buku->nama_kategori}}</td>
                         <td>{{$buku->deskripsi}}</td>
+                        <td>
+                            <img src="{{$buku->getImage()}}" alt="" height="100">
+                        </td>
                         <td>
                             <a class="btn btn-sm btn-warning" href="{{ route('buku.edit', $buku) }}"><i class="fa-solid fa-pen-to-square"></i></a>
                             <form method="POST" class="d-inline" action="{{ route('buku.destroy', $buku) }}">

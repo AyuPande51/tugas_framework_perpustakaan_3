@@ -11,7 +11,7 @@
                     </ul>
                 </div>   
             @endif
-            <form method="POST" action="{{route('buku.update', $buku)}}">               
+            <form method="POST" action="{{route('buku.update', $buku)}}" enctype="multipart/form-data">               
                 {{-- ini fungsi unntuk token form laravel --}}
                 @csrf
                 @method('put')
@@ -33,11 +33,17 @@
                 </div> 
                 <div class="mb-3">
                     <label>Qty</label>
-                    <input class="form-control" type="text" name="qty" value="{{old('Qty', $buku->Qty)}}" />
+                    <input class="form-control" type="text" name="qty" value="{{old('qty', $buku->qty)}}" />
                 </div>
                 <div class="mb-3">
                     <label>Deskripsi</label>
                     <input class="form-control" type="text" name="deskripsi" value="{{old('deskripsi', $buku->deskripsi)}}" />
+                </div>
+                 <div class="mb-3">
+                    <label>Gambar</label>
+                    <input class="form-control" type="file" name="gambar" />
+                    <p class="form-text">Kosongkan jika tidak ingin mengubah gambar!</p>
+                    <img src="{{ $buku->getImage() }}" alt="" height="100">
                 </div>
                 <div class="col">
                     <button type="submit" class="btn btn-primary">Simpan</button>

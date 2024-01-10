@@ -45,24 +45,16 @@ class BukuController extends Controller
             'deskripsi' => 'required',
         ]);
 
-        // image new name
-        $new_name = time() . '.' . $request->image->getClientOriginalExtension();
+        $buku = new Buku($request->all());
 
-        Storage::putFileAs(
-            // lokasi storage
-            $this->storage,
-            // file
-            $request->file('foto'),
-            // name
-            $new_name,
-        );
-        
-        $$user->judul = $request->judul;
-        $user->id_kategori = $request->id_kategori;
-        $user->qty = $request->qty;
-        $user->deskripsi = $request->deskripsi;
-        $user->image = $new_name;
-        $user->save();
+        if($request->file('gambar')){
+            $gambar = $request->file('gambar');
+            $filename = rand(1000,9999) . $gambar->getClientOriginalName();
+            $gambar->move('images/buku', $filename);
+            $buku->gambar = $filename;
+        }
+
+        $buku->save();
 
         return redirect()->route('buku.index')->with(['message' => 'DATA BERHASIL DITAMBAH']);
     }
@@ -76,13 +68,22 @@ class BukuController extends Controller
     public function edit(Buku $buku)
     {
         $title = 'Ubah buku';
+        
         $kategoris = Kategori::orderBy('nama_kategori')->get();
         return view('buku.edit', compact('title', 'buku', 'kategoris'));
     }
 
     public function update (Request $request, Buku $buku)
     {
-        $buku->update($request->all());
+        $data = $request->all();
+        if($request->file('gambar')){
+            $gambar = $request->file('gambar');
+            $filename = rand(1000,9999) . $gambar->getClientOriginalName();
+            $gambar->move('images/buku', $filename);
+            $data['gambar'] = $filename;
+        }
+        $buku->update($data);
+
         return redirect()->route('buku.index')->with(['message' => 'Data Berhasil Diubah!']);
     }
 

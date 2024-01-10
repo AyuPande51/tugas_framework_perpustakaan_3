@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('qty');
             $table->unsignedInteger('id_kategori');
             $table->text('deskripsi');
+            $table->string('gambar');
             $table->timestamps();
 
             // $table->foreign('id_kategori')->references('id')->on('tb_kategori');
